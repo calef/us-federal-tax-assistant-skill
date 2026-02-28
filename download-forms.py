@@ -3,14 +3,15 @@
 Download IRS form PDFs organized into forms/<year>/ directories.
 
 Usage:
-  python3 scripts/download-forms.py          # download all forms
-  python3 scripts/download-forms.py 2025     # download only 2025 forms
-  python3 scripts/download-forms.py 2024 2025 2026  # multiple years
+  python3 download-forms.py              # download all forms
+  python3 download-forms.py 2025         # download only 2025 forms
+  python3 download-forms.py 2024 2025    # multiple years
 
-Forms are organized by their IRS revision year as listed in forms/metadata.json.
-Run scripts/scrape-metadata.py first if metadata.json is missing or outdated.
+Forms are downloaded to ./forms/<year>/ relative to the current working
+directory. Reads forms-metadata.json from the same directory as this script.
 
 Filters out non-English language variants automatically.
+Skips files that have already been downloaded.
 """
 
 import os
@@ -21,9 +22,7 @@ import urllib.request
 import urllib.error
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-REPO_ROOT = os.path.join(SCRIPT_DIR, "..")
-FORMS_DIR = os.path.join(REPO_ROOT, "forms")
-META_FILE = os.path.join(FORMS_DIR, "metadata.json")
+META_FILE = os.path.join(SCRIPT_DIR, "forms-metadata.json")
 BASE_URL = "https://www.irs.gov/pub/irs-pdf"
 
 # Non-English language suffixes to skip
@@ -58,7 +57,6 @@ def is_lang_variant(fname):
 def load_metadata():
     if not os.path.exists(META_FILE):
         print(f"ERROR: {META_FILE} not found.")
-        print("Run: python3 scripts/scrape-metadata.py")
         raise SystemExit(1)
     with open(META_FILE) as f:
         records = json.load(f)
@@ -101,6 +99,8 @@ def main():
 
     mapping = load_metadata()  # fname -> year (or None)
 
+    forms_dir = os.path.join(os.getcwd(), "forms")
+
     # Filter to requested years
     if target_years:
         to_download = {f: y for f, y in mapping.items() if y in target_years}
@@ -115,7 +115,7 @@ def main():
 
     for fname, year in sorted(to_download.items(), key=lambda x: (x[1] or 0, x[0])):
         year_str = str(year) if year else "unknown"
-        dest_dir = os.path.join(FORMS_DIR, year_str)
+        dest_dir = os.path.join(forms_dir, year_str)
         os.makedirs(dest_dir, exist_ok=True)
         dest_path = os.path.join(dest_dir, fname)
 

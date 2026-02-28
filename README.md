@@ -19,30 +19,7 @@ This skill helps you:
 
 ## Installation
 
-### Prerequisites
-
-This repo uses [Git LFS](https://git-lfs.com/) to store the 737 IRS form PDFs. Install it before cloning:
-
-```bash
-# macOS
-brew install git-lfs
-
-# Ubuntu/Debian
-sudo apt install git-lfs
-
-# Windows (via Chocolatey)
-choco install git-lfs
-```
-
-Then enable it once globally:
-
-```bash
-git lfs install
-```
-
-### Clone
-
-Skills are markdown files placed in a `skills/` directory that Claude Code discovers automatically. Clone this repo to get the skill definition and bundled IRS form PDFs.
+Skills are markdown files placed in a `skills/` directory that Claude Code discovers automatically.
 
 **Personal install** (available across all your projects):
 
@@ -58,27 +35,22 @@ git clone https://github.com/calef/us-federal-tax-assistant-skill.git \
   .claude/skills/us-federal-tax-assistant
 ```
 
-The repo includes 737 pre-downloaded IRS form PDFs organized by revision year in `forms/<year>/`. Claude will use these automatically — no need to upload forms manually.
-
-> **Note:** Without Git LFS installed, `git clone` will download only small pointer files instead of the actual PDFs. Run `git lfs pull` after installing Git LFS to fetch the PDFs.
-
-### Updating forms / downloading a specific year
+IRS form PDFs are **not bundled** in the repo. Download them separately after cloning:
 
 ```bash
 cd ~/.claude/skills/us-federal-tax-assistant
 
-# Download only 2025 forms
-python3 scripts/download-forms.py 2025
+# Download forms for a specific year (fast, ~few dozen MB)
+python3 download-forms.py 2025
 
-# Download all forms for multiple years
-python3 scripts/download-forms.py 2024 2025 2026
+# Download forms for multiple years
+python3 download-forms.py 2024 2025 2026
 
-# Refresh metadata from IRS (requires: pip install playwright && playwright install chromium)
-python3 scripts/scrape-metadata.py
-
-# Re-organize any forms into correct year directories
-python3 scripts/organize-by-year.py
+# Download all ~700 forms
+python3 download-forms.py
 ```
+
+Forms download into a local `forms/<year>/` directory that is not committed to git. Requires Python 3 (stdlib only — no extra dependencies).
 
 ## Usage
 

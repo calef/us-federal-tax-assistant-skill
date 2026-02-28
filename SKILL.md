@@ -130,34 +130,19 @@ The final deliverable should be:
 
 ## Form Location
 
-If this skill was installed as a full directory (not just the SKILL.md), current year blank forms are available locally. Check the following path before asking the user to upload or download forms:
+IRS form PDFs are **not bundled** with this skill. To get local copies, instruct the user to run the download script from the skill directory:
 
+```bash
+# Download forms for a specific year
+python3 download-forms.py 2025
+
+# Download all forms
+python3 download-forms.py
 ```
-~/.claude/skills/us-federal-tax-assistant/forms/<year>/
-```
 
-For example, to find the 2025 Form 1040: `~/.claude/skills/us-federal-tax-assistant/forms/2025/f1040.pdf`
+Forms download to a local `forms/<year>/` directory (e.g., `forms/2025/f1040.pdf`). Files are named using IRS conventions (`f1040.pdf`, `f1040s1.pdf` for Schedule 1, `fw2.pdf` for W-2).
 
-Forms are organized by their IRS revision year. Most forms needed to prepare a 2025 tax return are in `forms/2025/` (314 forms), with some in `forms/2024/` (81 forms) or `forms/2026/` (25 forms, including current W-2 and W-4).
-
-Over 700 IRS forms are present when installed, including:
-- **Form 1040** and all Schedules (1, 2, 3, A, B, C, D, E, F, H, J, SE, 8812)
-- **Form 1041** (fiduciary) and all schedules
-- **Form 1065** (partnership) and all schedules
-- **Form 1120/1120-S** (corporate) and variants
-- **All 1099 series** (B, C, DIV, G, INT, K, MISC, NEC, OID, Q, R, S, SA, etc.)
-- **All 1098 series** (mortgage interest, student loan, tuition, etc.)
-- **Form 1095-A/B/C** (health coverage)
-- **W-2, W-3, W-4, W-7, W-9** and variants
-- **All 8xxx forms** (8949, 8889, 8995, 8812, 8962, 8606, 8829, etc.)
-- **Form 706** (estate tax) and all schedules
-- **Form 709** (gift tax)
-- **Forms 940–945** (employment taxes)
-- **Forms 2106, 2210, 2441, 2555, 3520, 4562, 4684, 4797, 4868, 5329, 5498, 5695, 6251, 7004** and many more
-
-Files are named using IRS conventions (e.g., `f1040.pdf`, `f1040s1.pdf` for Schedule 1, `fw2.pdf` for W-2).
-
-If forms are not present, ask the user to run `python3 scripts/download-forms.py` from the skill directory, or download forms manually from irs.gov.
+If the user prefers not to run the script, direct them to download forms manually from [irs.gov/forms-instructions](https://www.irs.gov/forms-instructions) and upload them to the conversation.
 
 ## Important Limitations
 
