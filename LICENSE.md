@@ -1,7 +1,7 @@
 GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
 
-Copyright (c) 2026 calef
+Copyright (c) 2026 Chris Alef
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
