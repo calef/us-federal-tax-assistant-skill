@@ -35,13 +35,24 @@ git clone https://github.com/calef/us-federal-tax-assistant-skill.git \
   .claude/skills/us-federal-tax-assistant
 ```
 
-The repo includes pre-downloaded 2025 IRS form PDFs in `forms/2025/`. Claude will use these automatically — no need to upload forms manually.
+The repo includes 737 pre-downloaded IRS form PDFs organized by revision year in `forms/<year>/`. Claude will use these automatically — no need to upload forms manually.
 
-### Updating forms for a new tax year
+### Updating forms / downloading a specific year
 
 ```bash
 cd ~/.claude/skills/us-federal-tax-assistant
-bash scripts/download-forms.sh 2026
+
+# Download only 2025 forms
+python3 scripts/download-forms.py 2025
+
+# Download all forms for multiple years
+python3 scripts/download-forms.py 2024 2025 2026
+
+# Refresh metadata from IRS (requires: pip install playwright && playwright install chromium)
+python3 scripts/scrape-metadata.py
+
+# Re-organize any forms into correct year directories
+python3 scripts/organize-by-year.py
 ```
 
 ## Usage
