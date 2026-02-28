@@ -101,4 +101,4 @@ IRS form layouts and line numbers change annually. When completing forms, always
 
 ## License
 
-MIT
+GPL v3 — see [LICENSE.md](LICENSE.md)
