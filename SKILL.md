@@ -130,30 +130,30 @@ The final deliverable should be:
 
 ## Form Location
 
-If this skill was installed as a full directory (not just the SKILL.md), current year blank forms may be available locally. Check the following path before asking the user to upload or download forms:
+If this skill was installed as a full directory (not just the SKILL.md), current year blank forms are available locally. Check the following path before asking the user to upload or download forms:
 
 ```
 ~/.claude/skills/us-federal-tax-assistant/forms/2025/
 ```
 
-Files present when installed:
+Over 700 IRS forms are present when installed, including:
+- **Form 1040** and all Schedules (1, 2, 3, A, B, C, D, E, F, H, J, SE, 8812)
+- **Form 1041** (fiduciary) and all schedules
+- **Form 1065** (partnership) and all schedules
+- **Form 1120/1120-S** (corporate) and variants
+- **All 1099 series** (B, C, DIV, G, INT, K, MISC, NEC, OID, Q, R, S, SA, etc.)
+- **All 1098 series** (mortgage interest, student loan, tuition, etc.)
+- **Form 1095-A/B/C** (health coverage)
+- **W-2, W-3, W-4, W-7, W-9** and variants
+- **All 8xxx forms** (8949, 8889, 8995, 8812, 8962, 8606, 8829, etc.)
+- **Form 706** (estate tax) and all schedules
+- **Form 709** (gift tax)
+- **Forms 940–945** (employment taxes)
+- **Forms 2106, 2210, 2441, 2555, 3520, 4562, 4684, 4797, 4868, 5329, 5498, 5695, 6251, 7004** and many more
 
-| File | Form |
-|------|------|
-| f1040.pdf | Form 1040 |
-| f1040-schedule-1.pdf | Schedule 1 |
-| f1040-schedule-2.pdf | Schedule 2 |
-| f1040-schedule-3.pdf | Schedule 3 |
-| f1040-schedule-a.pdf | Schedule A |
-| f1040-schedule-b.pdf | Schedule B |
-| f1040-schedule-d.pdf | Schedule D |
-| f8949.pdf | Form 8949 |
-| f8889.pdf | Form 8889 |
-| f8995.pdf | Form 8995 |
-| f1116.pdf | Form 1116 |
-| f8812.pdf | Schedule 8812 |
+Files are named using IRS conventions (e.g., `f1040.pdf`, `f1040s1.pdf` for Schedule 1, `fw2.pdf` for W-2).
 
-If the files are not present, ask the user to run `scripts/download-forms.sh` from the skill directory, or download forms manually from irs.gov.
+If forms are not present, ask the user to run `python3 scripts/download-forms.py` from the skill directory, or download forms manually from irs.gov.
 
 ## Important Limitations
 
