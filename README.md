@@ -19,6 +19,29 @@ This skill helps you:
 
 ## Installation
 
+### Prerequisites
+
+This repo uses [Git LFS](https://git-lfs.com/) to store the 737 IRS form PDFs. Install it before cloning:
+
+```bash
+# macOS
+brew install git-lfs
+
+# Ubuntu/Debian
+sudo apt install git-lfs
+
+# Windows (via Chocolatey)
+choco install git-lfs
+```
+
+Then enable it once globally:
+
+```bash
+git lfs install
+```
+
+### Clone
+
 Skills are markdown files placed in a `skills/` directory that Claude Code discovers automatically. Clone this repo to get the skill definition and bundled IRS form PDFs.
 
 **Personal install** (available across all your projects):
@@ -36,6 +59,8 @@ git clone https://github.com/calef/us-federal-tax-assistant-skill.git \
 ```
 
 The repo includes 737 pre-downloaded IRS form PDFs organized by revision year in `forms/<year>/`. Claude will use these automatically — no need to upload forms manually.
+
+> **Note:** Without Git LFS installed, `git clone` will download only small pointer files instead of the actual PDFs. Run `git lfs pull` after installing Git LFS to fetch the PDFs.
 
 ### Updating forms / downloading a specific year
 
