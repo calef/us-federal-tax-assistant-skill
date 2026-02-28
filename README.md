@@ -19,13 +19,23 @@ This skill helps you:
 
 ## Installation
 
-Add this skill to your Claude Code project:
+Skills are markdown files placed in a `skills/` directory that Claude Code discovers automatically.
+
+**Personal install** (available across all your projects):
 
 ```bash
-claude skill add https://github.com/calef/us-federal-tax-assistant-skill
+mkdir -p ~/.claude/skills/us-federal-tax-assistant
+curl -o ~/.claude/skills/us-federal-tax-assistant/SKILL.md \
+  https://raw.githubusercontent.com/calef/us-federal-tax-assistant-skill/main/SKILL.md
 ```
 
-Or manually copy `SKILL.md` into your project's `.claude/skills/` directory.
+**Project install** (current project only):
+
+```bash
+mkdir -p .claude/skills/us-federal-tax-assistant
+curl -o .claude/skills/us-federal-tax-assistant/SKILL.md \
+  https://raw.githubusercontent.com/calef/us-federal-tax-assistant-skill/main/SKILL.md
+```
 
 ## Usage
 
