@@ -19,22 +19,29 @@ This skill helps you:
 
 ## Installation
 
-Skills are markdown files placed in a `skills/` directory that Claude Code discovers automatically.
+Skills are markdown files placed in a `skills/` directory that Claude Code discovers automatically. Clone this repo to get the skill definition and bundled IRS form PDFs.
 
 **Personal install** (available across all your projects):
 
 ```bash
-mkdir -p ~/.claude/skills/us-federal-tax-assistant
-curl -o ~/.claude/skills/us-federal-tax-assistant/SKILL.md \
-  https://raw.githubusercontent.com/calef/us-federal-tax-assistant-skill/main/SKILL.md
+git clone https://github.com/calef/us-federal-tax-assistant-skill.git \
+  ~/.claude/skills/us-federal-tax-assistant
 ```
 
 **Project install** (current project only):
 
 ```bash
-mkdir -p .claude/skills/us-federal-tax-assistant
-curl -o .claude/skills/us-federal-tax-assistant/SKILL.md \
-  https://raw.githubusercontent.com/calef/us-federal-tax-assistant-skill/main/SKILL.md
+git clone https://github.com/calef/us-federal-tax-assistant-skill.git \
+  .claude/skills/us-federal-tax-assistant
+```
+
+The repo includes pre-downloaded 2025 IRS form PDFs in `forms/2025/`. Claude will use these automatically — no need to upload forms manually.
+
+### Updating forms for a new tax year
+
+```bash
+cd ~/.claude/skills/us-federal-tax-assistant
+bash scripts/download-forms.sh 2026
 ```
 
 ## Usage

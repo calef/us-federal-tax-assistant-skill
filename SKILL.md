@@ -128,6 +128,33 @@ The final deliverable should be:
 2. A summary showing key figures (total income, AGI, taxable income, total tax, total payments, refund/amount due)
 3. Any items requiring taxpayer attention or decision
 
+## Form Location
+
+If this skill was installed as a full directory (not just the SKILL.md), current year blank forms may be available locally. Check the following path before asking the user to upload or download forms:
+
+```
+~/.claude/skills/us-federal-tax-assistant/forms/2025/
+```
+
+Files present when installed:
+
+| File | Form |
+|------|------|
+| f1040.pdf | Form 1040 |
+| f1040-schedule-1.pdf | Schedule 1 |
+| f1040-schedule-2.pdf | Schedule 2 |
+| f1040-schedule-3.pdf | Schedule 3 |
+| f1040-schedule-a.pdf | Schedule A |
+| f1040-schedule-b.pdf | Schedule B |
+| f1040-schedule-d.pdf | Schedule D |
+| f8949.pdf | Form 8949 |
+| f8889.pdf | Form 8889 |
+| f8995.pdf | Form 8995 |
+| f1116.pdf | Form 1116 |
+| f8812.pdf | Schedule 8812 |
+
+If the files are not present, ask the user to run `scripts/download-forms.sh` from the skill directory, or download forms manually from irs.gov.
+
 ## Important Limitations
 
 - **Not tax advice**: This skill helps with form preparation, not tax planning or strategy
