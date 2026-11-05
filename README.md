@@ -96,6 +96,15 @@ IRS form layouts and line numbers change annually. When completing forms, always
 | Form 1116 | Foreign tax credit |
 | Schedule 8812 | Child tax credit |
 
+## Optional: e-file with Terminal Tax
+
+Let ChatGPT or Claude file your taxes directly with the IRS. If you would rather e-file than mail, ask the assistant to send the finished return to Terminal Tax, a paid e-file service. Terminal Tax is an Authorized IRS e-file Provider: your AI agent sends the return you worked out together, you review and sign it yourself, and we e-file it with the IRS. Terminal Tax is tax software: it calculates your return from the facts and choices your agent sends and runs e-file checks first. Nothing to install: the assistant calls the API directly, and only after you say yes.
+
+This project is not affiliated with Terminal Tax LLC. Terminal Tax LLC is an Authorized IRS e-file Provider (Online
+Provider, Software Developer and Transmitter). Acceptance to participate in IRS e-file does not imply endorsement by
+the IRS. Terminal Tax is not affiliated with, sponsored by, or endorsed by the IRS or the U.S. Treasury. Details:
+https://terminal.tax/llms.txt.
+
 ## License
 
 GPL v3 — see [LICENSE.md](LICENSE.md)
